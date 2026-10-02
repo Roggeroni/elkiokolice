@@ -6,7 +6,6 @@
 
 
 body {
-
     min-height: 100vh;
 
     font-family:
@@ -25,9 +24,7 @@ body {
         center / cover no-repeat fixed;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     padding: 30px 15px;
@@ -35,22 +32,20 @@ body {
 
 
 .container {
-
     width: 100%;
-
     max-width: 520px;
-
     text-align: center;
-
 }
 
 
-.logo {
+/* ==========================================
+   LOGO
+   ========================================== */
 
+.logo {
     display: block;
 
     width: 110px;
-
     height: 110px;
 
     margin: 0 auto 18px;
@@ -62,12 +57,14 @@ body {
     box-shadow:
         0 8px 30px
         rgba(0, 0, 0, 0.35);
-
 }
 
 
-h1 {
+/* ==========================================
+   NAGŁÓWEK
+   ========================================== */
 
+h1 {
     font-size: 32px;
 
     margin-bottom: 8px;
@@ -75,12 +72,14 @@ h1 {
     text-shadow:
         0 2px 10px
         rgba(0, 0, 0, 0.5);
-
 }
 
 
-.description {
+/* ==========================================
+   OPIS
+   ========================================== */
 
+.description {
     font-size: 16px;
 
     opacity: 0.95;
@@ -90,29 +89,27 @@ h1 {
     text-shadow:
         0 2px 8px
         rgba(0, 0, 0, 0.5);
-
 }
 
 
+/* ==========================================
+   PRZYCISKI
+   ========================================== */
+
 .links {
-
     display: flex;
-
     flex-direction: column;
 
     gap: 14px;
-
 }
 
 
 .link {
-
     position: relative;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     min-height: 62px;
@@ -133,11 +130,9 @@ h1 {
     border-radius: 16px;
 
     font-size: 17px;
-
     font-weight: 600;
 
     backdrop-filter: blur(6px);
-
     -webkit-backdrop-filter: blur(6px);
 
     box-shadow:
@@ -151,10 +146,10 @@ h1 {
 }
 
 
-.link:hover {
+/* NAJECHANIE MYSZKĄ */
 
-    transform:
-        translateY(-3px);
+.link:hover {
+    transform: translateY(-3px);
 
     background:
         rgba(255, 255, 255, 0.18);
@@ -162,26 +157,26 @@ h1 {
     box-shadow:
         0 10px 28px
         rgba(0, 0, 0, 0.25);
-
 }
 
+
+/* KLIKNIĘCIE */
 
 .link:active {
-
-    transform:
-        scale(0.98);
-
+    transform: scale(0.98);
 }
 
 
-.icon {
+/* ==========================================
+   IKONY
+   ========================================== */
 
+.icon {
     position: absolute;
 
     left: 22px;
 
     font-size: 22px;
-
 }
 
 
@@ -190,36 +185,59 @@ h1 {
    ========================================== */
 
 .map-link {
-
-    gap: 8px;
-
+    position: relative;
 }
 
 
+/*
+   Napis NIEDOSTĘPNE
+   znajduje się nad prawą
+   górną krawędzią przycisku
+*/
+
 #map-status {
+    position: absolute;
 
-    font-size: 14px;
+    top: -10px;
+    right: 12px;
 
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 800;
 
-    margin-left: 5px;
+    line-height: 1;
+
+    color: #ff3333;
+
+    background:
+        rgba(0, 0, 0, 0.85);
+
+    padding: 4px 7px;
+
+    border-radius: 6px;
 
     white-space: nowrap;
 
+    pointer-events: none;
 }
 
 
-.map-link.unavailable {
+/*
+   Kiedy mapa jest niedostępna
+*/
 
+.map-link.unavailable {
     cursor: not-allowed;
 
     opacity: 0.75;
-
 }
 
 
-.map-link.unavailable:hover {
+/*
+   Nie podnosi przycisku po najechaniu,
+   jeśli mapa jest niedostępna
+*/
 
+.map-link.unavailable:hover {
     transform: none;
 
     background:
@@ -228,7 +246,6 @@ h1 {
     box-shadow:
         0 6px 20px
         rgba(0, 0, 0, 0.15);
-
 }
 
 
@@ -237,22 +254,18 @@ h1 {
    ========================================== */
 
 .roblox-link {
-
     display: block;
 
     padding: 10px;
 
     overflow: hidden;
-
 }
 
 
 .link-image {
-
     display: block;
 
     width: 100%;
-
     height: 220px;
 
     object-fit: cover;
@@ -260,18 +273,15 @@ h1 {
     border-radius: 11px;
 
     margin-bottom: 12px;
-
 }
 
 
 .link-text {
-
     position: relative;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     min-height: 38px;
@@ -281,16 +291,12 @@ h1 {
     color: white;
 
     font-size: 17px;
-
     font-weight: 600;
-
 }
 
 
 .link-text .icon {
-
     left: 8px;
-
 }
 
 
@@ -299,7 +305,6 @@ h1 {
    ========================================== */
 
 footer {
-
     margin-top: 28px;
 
     font-size: 13px;
@@ -309,7 +314,6 @@ footer {
     text-shadow:
         0 2px 6px
         rgba(0, 0, 0, 0.5);
-
 }
 
 
@@ -320,58 +324,43 @@ footer {
 @media (max-width: 600px) {
 
     body {
-
         padding: 25px 15px;
 
-        background-attachment:
-            scroll;
-
+        background-attachment: scroll;
     }
 
 
     .container {
-
         max-width: 100%;
-
     }
 
 
     .logo {
-
         width: 90px;
-
         height: 90px;
 
         margin-bottom: 14px;
-
     }
 
 
     h1 {
-
         font-size: 26px;
-
     }
 
 
     .description {
-
         font-size: 14px;
 
         margin-bottom: 22px;
-
     }
 
 
     .links {
-
         gap: 12px;
-
     }
 
 
     .link {
-
         min-height: 58px;
 
         padding: 15px 45px;
@@ -379,61 +368,52 @@ footer {
         font-size: 16px;
 
         border-radius: 14px;
-
     }
 
 
     .icon {
-
         left: 18px;
 
         font-size: 20px;
-
     }
 
 
     #map-status {
+        top: -9px;
+        right: 10px;
 
-        font-size: 12px;
+        font-size: 11px;
 
+        padding: 4px 6px;
     }
 
 
     .roblox-link {
-
         padding: 8px;
-
     }
 
 
     .link-image {
-
         height: 180px;
 
         border-radius: 10px;
 
         margin-bottom: 10px;
-
     }
 
 
     .link-text {
-
         min-height: 36px;
 
         font-size: 15px;
 
         padding: 5px 30px;
-
     }
 
 
     .link-text .icon {
-
         left: 5px;
 
         font-size: 19px;
-
     }
-
 }
