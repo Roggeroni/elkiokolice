@@ -146,7 +146,9 @@ h1 {
 }
 
 
-/* NAJECHANIE MYSZKĄ */
+/* ==========================================
+   NAJECHANIE MYSZKĄ
+   ========================================== */
 
 .link:hover {
     transform: translateY(-3px);
@@ -160,7 +162,9 @@ h1 {
 }
 
 
-/* KLIKNIĘCIE */
+/* ==========================================
+   KLIKNIĘCIE
+   ========================================== */
 
 .link:active {
     transform: scale(0.98);
@@ -190,12 +194,13 @@ h1 {
 
 
 /*
-   Napis NIEDOSTĘPNE
-   znajduje się nad prawą
-   górną krawędzią przycisku
+   Napis NIEDOSTĘPNE jest domyślnie
+   całkowicie ukryty.
 */
 
 #map-status {
+    display: none;
+
     position: absolute;
 
     top: -10px;
@@ -222,7 +227,18 @@ h1 {
 
 
 /*
-   Kiedy mapa jest niedostępna
+   NIEDOSTĘPNE pojawia się tylko,
+   kiedy mapa jest niedostępna.
+*/
+
+.map-link.unavailable #map-status {
+    display: block;
+}
+
+
+/*
+   Wygląd przycisku, kiedy mapa
+   jest niedostępna.
 */
 
 .map-link.unavailable {
@@ -233,8 +249,8 @@ h1 {
 
 
 /*
-   Nie podnosi przycisku po najechaniu,
-   jeśli mapa jest niedostępna
+   Nie przesuwamy przycisku po
+   najechaniu, kiedy jest niedostępny.
 */
 
 .map-link.unavailable:hover {
@@ -378,8 +394,11 @@ footer {
     }
 
 
+    /* NIEDOSTĘPNE na telefonie */
+
     #map-status {
         top: -9px;
+
         right: 10px;
 
         font-size: 11px;
@@ -387,6 +406,8 @@ footer {
         padding: 4px 6px;
     }
 
+
+    /* ROBLOX */
 
     .roblox-link {
         padding: 8px;
@@ -416,4 +437,5 @@ footer {
 
         font-size: 19px;
     }
+
 }
