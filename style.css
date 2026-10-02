@@ -1,21 +1,13 @@
 * {
     box-sizing: border-box;
-
     margin: 0;
     padding: 0;
 }
 
-
 body {
     min-height: 100vh;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
-
     background:
         linear-gradient(
             rgba(0, 0, 0, 0.35),
@@ -23,452 +15,249 @@ body {
         ),
         url("images/background.png")
         center / cover no-repeat fixed;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     padding: 30px 15px;
 }
 
-
 .container {
     width: 100%;
-
     max-width: 520px;
-
     text-align: center;
 }
 
-
-/* ==========================================
-   LOGO
-   ========================================== */
-
 .logo {
     display: block;
-
     width: 110px;
     height: 110px;
-
     margin: 0 auto 18px;
-
     border-radius: 50%;
-
     object-fit: cover;
-
     box-shadow:
         0 8px 30px
         rgba(0, 0, 0, 0.35);
 }
 
-
-/* ==========================================
-   NAGŁÓWEK
-   ========================================== */
-
 h1 {
     font-size: 32px;
-
     margin-bottom: 8px;
-
     text-shadow:
         0 2px 10px
         rgba(0, 0, 0, 0.5);
 }
 
-
-/* ==========================================
-   OPIS
-   ========================================== */
-
 .description {
     font-size: 16px;
-
     opacity: 0.95;
-
     margin-bottom: 28px;
-
     text-shadow:
         0 2px 8px
         rgba(0, 0, 0, 0.5);
 }
 
-
-/* ==========================================
-   PRZYCISKI
-   ========================================== */
-
 .links {
     display: flex;
-
     flex-direction: column;
-
     gap: 14px;
 }
 
-
 .link {
     position: relative;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     min-height: 62px;
-
     padding: 16px 50px;
-
     background:
         rgba(255, 255, 255, 0.08);
-
     border:
         2px solid
         rgba(255, 255, 255, 0.9);
-
     color: white;
-
     text-decoration: none;
-
     border-radius: 16px;
-
     font-size: 17px;
-
     font-weight: 600;
-
     backdrop-filter: blur(6px);
-
     -webkit-backdrop-filter: blur(6px);
-
     box-shadow:
         0 6px 20px
         rgba(0, 0, 0, 0.15);
-
     transition:
         transform 0.2s ease,
         background 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-
-/* ==========================================
-   NAJECHANIE
-   ========================================== */
-
 .link:hover {
-    transform:
-        translateY(-3px);
-
+    transform: translateY(-3px);
     background:
         rgba(255, 255, 255, 0.18);
-
     box-shadow:
         0 10px 28px
         rgba(0, 0, 0, 0.25);
 }
 
-
-/* ==========================================
-   KLIKNIĘCIE
-   ========================================== */
-
 .link:active {
-    transform:
-        scale(0.98);
+    transform: scale(0.98);
 }
-
-
-/* ==========================================
-   IKONY
-   ========================================== */
 
 .icon {
     position: absolute;
-
     left: 22px;
-
     font-size: 22px;
 }
-
-
-/* ==========================================
-   MAPA
-   ========================================== */
 
 .map-link {
     position: relative;
 }
 
-
-/* ==========================================
-   STATUS MAPY
-   ========================================== */
-
 #map-status {
-
     position: absolute;
-
     top: -11px;
-
     right: 12px;
-
     font-size: 11px;
-
     font-weight: 800;
-
     line-height: 1;
-
     padding: 4px 7px;
-
     border-radius: 6px;
-
     white-space: nowrap;
-
     pointer-events: none;
 }
 
-
-/* ==========================================
-   DOSTĘPNE
-   ========================================== */
-
 #map-status.online {
-
     color: #00ff66;
-
     background:
         rgba(0, 0, 0, 0.85);
 }
-
-
-/* ==========================================
-   NIEDOSTĘPNE
-   ========================================== */
 
 #map-status.offline {
-
     color: #ff3333;
-
     background:
         rgba(0, 0, 0, 0.85);
 }
 
-
-/* ==========================================
-   MAPA NIEDOSTĘPNA
-   ========================================== */
-
 .map-link.unavailable {
-
     cursor: not-allowed;
-
     opacity: 0.75;
 }
 
-
 .map-link.unavailable:hover {
-
     transform: none;
-
     background:
         rgba(255, 255, 255, 0.08);
-
     box-shadow:
         0 6px 20px
         rgba(0, 0, 0, 0.15);
 }
 
-
-/* ==========================================
-   ROBLOX
-   ========================================== */
-
 .roblox-link {
-
     display: block;
-
     padding: 10px;
-
     overflow: hidden;
 }
 
-
 .link-image {
-
     display: block;
-
     width: 100%;
-
     height: 220px;
-
     object-fit: cover;
-
     border-radius: 11px;
-
     margin-bottom: 12px;
 }
 
-
 .link-text {
-
     position: relative;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     min-height: 38px;
-
     padding: 5px 35px;
-
     color: white;
-
     font-size: 17px;
-
     font-weight: 600;
 }
 
-
 .link-text .icon {
-
     left: 8px;
 }
 
-
-/* ==========================================
-   FOOTER
-   ========================================== */
-
 footer {
-
     margin-top: 28px;
-
     font-size: 13px;
-
     opacity: 0.8;
-
     text-shadow:
         0 2px 6px
         rgba(0, 0, 0, 0.5);
 }
 
-
-/* ==========================================
-   TELEFON
-   ========================================== */
-
 @media (max-width: 600px) {
-
     body {
-
         padding: 25px 15px;
-
-        background-attachment:
-            scroll;
+        background-attachment: scroll;
     }
 
-
     .container {
-
         max-width: 100%;
     }
 
-
     .logo {
-
         width: 90px;
         height: 90px;
-
         margin-bottom: 14px;
     }
 
-
     h1 {
-
         font-size: 26px;
     }
 
-
     .description {
-
         font-size: 14px;
-
         margin-bottom: 22px;
     }
 
-
     .links {
-
         gap: 12px;
     }
 
-
     .link {
-
         min-height: 58px;
-
         padding: 15px 45px;
-
         font-size: 16px;
-
         border-radius: 14px;
     }
 
-
     .icon {
-
         left: 18px;
-
         font-size: 20px;
     }
 
-
     #map-status {
-
         top: -9px;
-
         right: 10px;
-
         font-size: 11px;
-
         padding: 4px 6px;
     }
 
-
     .roblox-link {
-
         padding: 8px;
     }
 
-
     .link-image {
-
         height: 180px;
-
         border-radius: 10px;
-
         margin-bottom: 10px;
     }
 
-
     .link-text {
-
         min-height: 36px;
-
         font-size: 15px;
-
         padding: 5px 30px;
     }
 
-
     .link-text .icon {
-
         left: 5px;
-
         font-size: 19px;
     }
-
 }
