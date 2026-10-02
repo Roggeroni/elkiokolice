@@ -25,7 +25,7 @@
         <p class="description">
             Discord: .gg/p3nCxyNStV <br>
             ~~<br>
-            Witamy!
+            <span id="greeting">Witamy!</span>
         </p>
 
         <div class="links">
@@ -106,7 +106,30 @@
     </main>
 
     <script src="script.js"></script>
+    <script>
 
+    function updateGreeting() {
+
+        const hour = new Date().getHours();
+
+        const greeting =
+            document.getElementById("greeting");
+
+        if (hour >= 0 && hour < 15) {
+
+            greeting.textContent = "Dzień dobry!";
+
+        } else {
+
+            greeting.textContent = "Dobry wieczór!";
+
+        }
+
+    }
+
+    updateGreeting();
+
+</script>
 </body>
 
 </html>
