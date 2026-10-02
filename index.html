@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,6 @@
     <title>Ełk i okolice</title>
 
     <link rel="stylesheet" href="style.css">
-
-    
 </head>
 
 <body>
@@ -31,19 +30,31 @@
 
         <div class="links">
 
-            <a href="https://discord.gg/p3nCxyNStV" class="link">
+            <!-- DISCORD -->
+            <a
+                href="https://discord.gg/p3nCxyNStV"
+                class="link"
+            >
                 <span class="icon">💬</span>
                 Wbij na Discorda!
             </a>
 
 
-            <a href="https://www.roblox.com/games/135601608540315/Kalendarz-sesji" class="link">
+            <!-- KALENDARZ -->
+            <a
+                href="https://www.roblox.com/games/135601608540315/Kalendarz-sesji"
+                class="link"
+            >
                 <span class="icon">🗓️</span>
                 Zastanawiasz się kiedy sesja? Zajrzyj tutaj!
             </a>
 
 
-            <a href="https://www.roblox.com/games/108909622823718" class="link roblox-link">
+            <!-- ROBLOX -->
+            <a
+                href="https://www.roblox.com/games/108909622823718"
+                class="link roblox-link"
+            >
 
                 <img
                     src="images/roblox.png"
@@ -59,34 +70,39 @@
             </a>
 
 
-            <a href="https://www.tiktok.com/@mzkelkroblox" class="link">
+            <!-- TIKTOK -->
+            <a
+                href="https://www.tiktok.com/@mzkelkroblox"
+                class="link"
+            >
                 <span class="icon">🎵</span>
                 Obczaj nasz TikTok!
             </a>
 
 
-            <a href="https://www.youtube.com/@elkiokoliceroblox" class="link">
+            <!-- YOUTUBE -->
+            <a
+                href="https://www.youtube.com/@elkiokoliceroblox"
+                class="link"
+            >
                 <span class="icon">▶️</span>
                 Wpadnij na naszego YouTube!
             </a>
 
 
-            <!-- ==============================
-                 6. PRZYCISK — MAPA
-                 ============================== -->
-
+            <!-- MAPA -->
             <a
                 href="#"
                 class="link map-link"
                 id="map-link"
             >
-
                 <span class="icon">🗺️</span>
 
-                <span>MAPA</span>
+                <span class="map-title">
+                    MAPA
+                </span>
 
                 <span id="map-status"></span>
-
             </a>
 
         </div>
@@ -99,184 +115,8 @@
     </main>
 
 
-    <script>
-
-        /*
-        ==========================================
-        USTAWIENIA
-        ==========================================
-        */
-
-        const STATUS_URL =
-            "https://status.elkiokolice.pl/status";
-
-
-        /*
-        ==========================================
-        CO ILE SPRAWDZAĆ?
-        ==========================================
-
-        10000 = 10 sekund
-        */
-
-        const CHECK_INTERVAL = 10000;
-
-
-        /*
-        ==========================================
-        ELEMENTY
-        ==========================================
-        */
-
-        const mapLink =
-            document.getElementById("map-link");
-
-        const mapStatus =
-            document.getElementById("map-status");
-
-
-        /*
-        ==========================================
-        SPRAWDZANIE STATUSU
-        ==========================================
-        */
-
-        async function checkMapStatus() {
-
-            try {
-
-                const response = await fetch(
-                    STATUS_URL,
-                    {
-                        method: "GET",
-                        cache: "no-store"
-                    }
-                );
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "Serwer nie odpowiada"
-                    );
-
-                }
-
-
-                const data =
-                    await response.json();
-
-
-                /*
-                ----------------------------------
-                PYTHON DZIAŁA
-                ----------------------------------
-                */
-
-                if (data.online === true) {
-
-                    mapStatus.textContent = "";
-
-                    mapLink.classList.remove(
-                        "unavailable"
-                    );
-
-                    mapLink.href =
-                        data.map_url || "#";
-
-                }
-
-
-                /*
-                ----------------------------------
-                PYTHON ODPOWIADA,
-                ALE MAPA WYŁĄCZONA
-                ----------------------------------
-                */
-
-                else {
-
-                    mapStatus.textContent =
-                        "NIEDOSTĘPNE";
-
-                    mapLink.classList.add(
-                        "unavailable"
-                    );
-
-                    mapLink.href = "#";
-
-                }
-
-            }
-
-
-            /*
-            --------------------------------------
-            BRAK POŁĄCZENIA
-            --------------------------------------
-            */
-
-            catch (error) {
-
-                mapStatus.textContent =
-                    "NIEDOSTĘPNE";
-
-                mapLink.classList.add(
-                    "unavailable"
-                );
-
-                mapLink.href = "#";
-
-            }
-
-        }
-
-
-        /*
-        ==========================================
-        BLOKADA KLIKNIĘCIA OFFLINE
-        ==========================================
-        */
-
-        mapLink.addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    mapLink.classList.contains(
-                        "unavailable"
-                    )
-                ) {
-
-                    event.preventDefault();
-
-                }
-
-            }
-        );
-
-
-        /*
-        ==========================================
-        PIERWSZE SPRAWDZENIE
-        ==========================================
-        */
-
-        checkMapStatus();
-
-
-        /*
-        ==========================================
-        SPRAWDZANIE CO 10 SEKUND
-        ==========================================
-        */
-
-        setInterval(
-            checkMapStatus,
-            CHECK_INTERVAL
-        );
-
-    </script>
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
+
 </body>
 </html>
