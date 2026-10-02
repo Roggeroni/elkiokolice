@@ -1,10 +1,16 @@
+/*
+==========================================
+ADRES SERWERA STATUSU
+==========================================
+*/
+
 const STATUS_URL =
     "https://status.elkiokolice.pl/status";
 
 
 /*
 ==========================================
-CO ILE SPRAWDZAĆ STATUS
+CZĘSTOTLIWOŚĆ SPRAWDZANIA
 ==========================================
 
 10000 = 10 sekund
@@ -15,7 +21,7 @@ const CHECK_INTERVAL = 10000;
 
 /*
 ==========================================
-ELEMENTY STRONY
+ELEMENTY
 ==========================================
 */
 
@@ -40,6 +46,7 @@ async function checkMapStatus() {
             STATUS_URL,
             {
                 method: "GET",
+
                 cache: "no-store"
             }
         );
@@ -52,9 +59,11 @@ async function checkMapStatus() {
         */
 
         if (!response.ok) {
+
             throw new Error(
                 "Serwer nie odpowiada"
             );
+
         }
 
 
@@ -63,24 +72,32 @@ async function checkMapStatus() {
 
 
         /*
-        ----------------------------------
+        ==================================
         PYTHON DZIAŁA
-        ----------------------------------
+        ==================================
         */
 
         if (data.online === true) {
 
-            // Usuwamy napis
-            mapStatus.textContent = "";
+            mapStatus.textContent =
+                "DOSTĘPNE";
 
 
-            // Przycisk staje się aktywny
+            mapStatus.classList.remove(
+                "offline"
+            );
+
+
+            mapStatus.classList.add(
+                "online"
+            );
+
+
             mapLink.classList.remove(
                 "unavailable"
             );
 
 
-            // Ustawiamy adres mapy
             mapLink.href =
                 data.map_url || "#";
 
@@ -88,16 +105,25 @@ async function checkMapStatus() {
 
 
         /*
-        ----------------------------------
-        PYTHON ODPOWIADA,
-        ALE MAPA NIEDOSTĘPNA
-        ----------------------------------
+        ==================================
+        PYTHON NIE DZIAŁA
+        ==================================
         */
 
         else {
 
             mapStatus.textContent =
                 "NIEDOSTĘPNE";
+
+
+            mapStatus.classList.remove(
+                "online"
+            );
+
+
+            mapStatus.classList.add(
+                "offline"
+            );
 
 
             mapLink.classList.add(
@@ -113,17 +139,25 @@ async function checkMapStatus() {
 
 
     /*
-    --------------------------------------
-    PYTHON WYŁĄCZONY
-    KOMPUTER WYŁĄCZONY
-    TUNNEL NIE DZIAŁA
-    --------------------------------------
+    ======================================
+    BRAK POŁĄCZENIA
+    ======================================
     */
 
     catch (error) {
 
         mapStatus.textContent =
             "NIEDOSTĘPNE";
+
+
+        mapStatus.classList.remove(
+            "online"
+        );
+
+
+        mapStatus.classList.add(
+            "offline"
+        );
 
 
         mapLink.classList.add(
@@ -140,7 +174,7 @@ async function checkMapStatus() {
 
 /*
 ==========================================
-BLOKADA KLIKNIĘCIA OFFLINE
+BLOKADA KLIKNIĘCIA
 ==========================================
 */
 
