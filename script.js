@@ -1,4 +1,4 @@
-const STATUS_URL = "https://status.elkiokolicej7uz.pl/status";
+const STATUS_URL = "https://status.elkiokolice.pl/status";
 
 const CHECK_INTERVAL = 10000;
 
