@@ -7,6 +7,8 @@
     <title>Ełk i okolice</title>
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    
 </head>
 
 <body>
@@ -22,7 +24,9 @@
         <h1>Ełk i okolice</h1>
 
         <p class="description">
-            Discord: .gg/p3nCxyNStV <br>~~<br> Witamy!
+            Discord: .gg/p3nCxyNStV <br>
+            ~~<br>
+            Witamy!
         </p>
 
         <div class="links">
@@ -32,10 +36,12 @@
                 Wbij na Discorda!
             </a>
 
+
             <a href="https://www.roblox.com/games/135601608540315/Kalendarz-sesji" class="link">
                 <span class="icon">🗓️</span>
                 Zastanawiasz się kiedy sesja? Zajrzyj tutaj!
             </a>
+
 
             <a href="https://www.roblox.com/games/108909622823718" class="link roblox-link">
 
@@ -52,23 +58,225 @@
 
             </a>
 
+
             <a href="https://www.tiktok.com/@mzkelkroblox" class="link">
                 <span class="icon">🎵</span>
                 Obczaj nasz TikTok!
             </a>
+
 
             <a href="https://www.youtube.com/@elkiokoliceroblox" class="link">
                 <span class="icon">▶️</span>
                 Wpadnij na naszego YouTube!
             </a>
 
+
+            <!-- ==============================
+                 6. PRZYCISK — MAPA
+                 ============================== -->
+
+            <a
+                href="#"
+                class="link map-link"
+                id="map-link"
+            >
+
+                <span class="icon">🗺️</span>
+
+                <span>MAPA</span>
+
+                <span id="map-status"></span>
+
+            </a>
+
         </div>
+
 
         <footer>
             © 2026 Ełk i okolice
         </footer>
 
     </main>
+
+
+    <script>
+
+        /*
+        ==========================================
+        USTAWIENIA
+        ==========================================
+        */
+
+        const STATUS_URL =
+            "https://status.elkiokolice.pl/status";
+
+
+        /*
+        ==========================================
+        CO ILE SPRAWDZAĆ?
+        ==========================================
+
+        10000 = 10 sekund
+        */
+
+        const CHECK_INTERVAL = 10000;
+
+
+        /*
+        ==========================================
+        ELEMENTY
+        ==========================================
+        */
+
+        const mapLink =
+            document.getElementById("map-link");
+
+        const mapStatus =
+            document.getElementById("map-status");
+
+
+        /*
+        ==========================================
+        SPRAWDZANIE STATUSU
+        ==========================================
+        */
+
+        async function checkMapStatus() {
+
+            try {
+
+                const response = await fetch(
+                    STATUS_URL,
+                    {
+                        method: "GET",
+                        cache: "no-store"
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Serwer nie odpowiada"
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                /*
+                ----------------------------------
+                PYTHON DZIAŁA
+                ----------------------------------
+                */
+
+                if (data.online === true) {
+
+                    mapStatus.textContent = "";
+
+                    mapLink.classList.remove(
+                        "unavailable"
+                    );
+
+                    mapLink.href =
+                        data.map_url || "#";
+
+                }
+
+
+                /*
+                ----------------------------------
+                PYTHON ODPOWIADA,
+                ALE MAPA WYŁĄCZONA
+                ----------------------------------
+                */
+
+                else {
+
+                    mapStatus.textContent =
+                        "NIEDOSTĘPNE";
+
+                    mapLink.classList.add(
+                        "unavailable"
+                    );
+
+                    mapLink.href = "#";
+
+                }
+
+            }
+
+
+            /*
+            --------------------------------------
+            BRAK POŁĄCZENIA
+            --------------------------------------
+            */
+
+            catch (error) {
+
+                mapStatus.textContent =
+                    "NIEDOSTĘPNE";
+
+                mapLink.classList.add(
+                    "unavailable"
+                );
+
+                mapLink.href = "#";
+
+            }
+
+        }
+
+
+        /*
+        ==========================================
+        BLOKADA KLIKNIĘCIA OFFLINE
+        ==========================================
+        */
+
+        mapLink.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    mapLink.classList.contains(
+                        "unavailable"
+                    )
+                ) {
+
+                    event.preventDefault();
+
+                }
+
+            }
+        );
+
+
+        /*
+        ==========================================
+        PIERWSZE SPRAWDZENIE
+        ==========================================
+        */
+
+        checkMapStatus();
+
+
+        /*
+        ==========================================
+        SPRAWDZANIE CO 10 SEKUND
+        ==========================================
+        */
+
+        setInterval(
+            checkMapStatus,
+            CHECK_INTERVAL
+        );
+
+    </script>
 
 </body>
 </html>
